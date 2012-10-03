@@ -44,3 +44,4 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'therubyracer'
+gem 'webrat'
