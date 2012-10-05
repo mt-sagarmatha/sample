@@ -1,5 +1,6 @@
 <h1></h1>
 <%= form_for(@user) do |f| %>
+	<%= render 'shared/error_messages' %>
 	<div class = "field">
 		<%= f.label :name %> <br />
 		<%= f.text_field :name %>
@@ -16,8 +17,8 @@
 	</div>
 	
 	<div class = "field">
-		<%= f.label :Confirmation %> <br />
-		<%= f.password_field :password_confirmation %>
+    <%= f.label :password_confirmation, "Confirmation" %><br />
+    <%= f.password_field :password_confirmation %>
 	</div>
 	
 	<div class= "actions">

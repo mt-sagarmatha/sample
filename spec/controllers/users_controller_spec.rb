@@ -55,6 +55,54 @@ describe UsersController do
   	end    
   end
   
+  describe "Post Create" do
+		describe "failure" do
+			before(:each) do 
+				@att = {name:"", email:"", password: "", password_confirmation:""}
+			end
+			
+			it "should not create a user" do
+				lambda do
+					post :create, user: @att
+				end.should_not change(User, :count )
+			end
+			
+			it "should have right title" do
+				post :create, user: @att
+				response.should have_selector('title', content: "Sign up")
+			end
+			
+			it "should rend new page" do
+				post :create, :user => @att
+				response.should render_template('new')
+			end
+		end
+		
+		describe "success" do
+			
+			before(:each) do 
+				@att = {name:"new user", email:"new@example.com", password: "foofoobar", password_confirmation:"foofoobar"}
+			end
+			
+			it "should" do
+				lambda do
+					post :create, user: @att
+				end.should change(User, :count).by(1)
+			end
+		
+			it "should redirect to user show page" do
+				post :create, user: @att
+				response.should redirect_to(user_path(assigns[:user]))
+			end
+			
+			it "should redirect to user show page" do
+				post :create, user: @att
+				flash[:success].should =~ /welcome to the sample app!/i
+			end
+			
+		end
+  end
+  
 
 
 end
