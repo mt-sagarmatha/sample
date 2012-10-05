@@ -16,7 +16,7 @@ describe User do
   
   before(:each) do
   	@att = {
-  		name: "emin",
+  		name: "Emin",
   		email: "emain@gamil.com",
   		password: "foofoobar",
   		password_confirmation: "foofoobar"

@@ -21,7 +21,7 @@ describe UsersController do
     end
     
     it "should have the right title" do
-      get 'show', id: @user
+      get 'show', id: @user.name
       response.should have_selector('title', content: @user.name)
     end
     
