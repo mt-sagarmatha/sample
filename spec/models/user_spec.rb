@@ -138,15 +138,15 @@ describe User do
   	
   	describe "authenticate method" do
 			it "should return nil on email/pass missmatch" do
-				User.authenticate(@att[:email], "wrong").shout be_nil
+				User.authenticate(@att[:email], "wrong").should be_nil
 			end
 			
 			it "should return nil for email with no user" do
-				User.authenticate("bullshit@foo.com", @att[:password]).shout be_nil
+				User.authenticate("bullshit@foo.com", @att[:password]).should be_nil
 			end
 			
 			it "should return user on match" do
-				User.authenticate(@att[:email], @att[:password]).shout == @user
+				User.authenticate(@att[:email], @att[:password]).should == @user
 			end
 		end
   end
