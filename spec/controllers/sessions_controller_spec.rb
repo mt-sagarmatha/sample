@@ -39,13 +39,28 @@ describe SessionsController do
 				@att = {email: @user.email, password: @user.password}
 			end	
 	
+			it "should sign user in" do
+				post :create, session: @att
+				controller.current_user.should ==@user
+				constoller.should be_signed_in
+			end
+			
 			it "should redirect to user" do
 				post :create, session: @att
 				response.should redirect_to(user_path(@user))
 			end
-		
-		
 		end
 	end
+	
+	describe "delete destroy" do
+	
+		it "should sign user out" do
+			test_sign_in(Factory(:user))
+			delete :destroy
+			controller.should_not be_signed_in
+			response.should redirect_to(root_path)
+		end
+	end
+	
 end
 

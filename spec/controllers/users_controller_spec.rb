@@ -84,7 +84,7 @@ describe UsersController do
 				@att = {name:"new user", email:"new@example.com", password: "foofoobar", password_confirmation:"foofoobar"}
 			end
 			
-			it "should" do
+			it "should create a user" do
 				lambda do
 					post :create, user: @att
 				end.should change(User, :count).by(1)
@@ -99,6 +99,12 @@ describe UsersController do
 				post :create, user: @att
 				flash[:success].should =~ /welcome to the sample app!/i
 			end
+			
+			it "should sign user in" do
+				post :create, user: @att
+				controller.should be_signed_in
+			end
+			
 			
 		end
   end
