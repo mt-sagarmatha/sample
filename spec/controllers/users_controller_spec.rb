@@ -3,6 +3,29 @@ require 'spec_helper'
 describe UsersController do
 	render_views
   
+  describe "Get index" do
+    describe "non signed in users" do
+      it "should deny access "do
+        get :index
+        response.should redirect_to(signin_path)
+      end 
+    end
+   
+    describe " signed in users" do
+      before(:each) do
+        @user = test_sign_in(Factory(:user))
+        Factory(:user,:email =>"another@example.com")
+        Factory(:user,:email =>"another@example.net")
+      end
+
+      it "should be success "do
+        get :index
+        response.should be_success
+      end 
+    end
+
+
+  end
   
   describe "GET 'show'" do
   
