@@ -1,0 +1,18 @@
+ <% @user.microposts.each do |microposts| %>
+	 <tr>
+		<td class = "micropost" >
+			<span class = "content"> <%= microposts.content %> </span>
+			<span class ="timestamp">
+				Posted <%= time_ago_in_words(microposts.created_at) %> ago
+			</span> 
+		</td>
+	<% user = micropost.user rescue User.find(micropost.user_id) %>
+	<% if current_user?(micropost.user) %>
+		<td>
+			<%= link_to "delete", micropost, :method => :delete, :confirm => "really?", :title => 	micropost.content %>
+		</td>
+	<% end %>
+
+	</tr>
+<% end %>
+<!-- error on this page. loop not needed. Fix: specify collection, check var names -->
