@@ -180,3 +180,48 @@ ul.users{
 ul.users li{
 	list-style: none;
 }
+
+h1.micropost{
+	margin-bottom: .3em;
+}
+
+table.microposts{
+	margin-top: 1em;
+
+}
+
+table.microposts tr {
+
+	height:70px;
+}
+
+table.microposts tr td.gravatar {
+
+	border-top: 1px solid #cc;
+	vertical-align:top;
+	width:50px;
+}
+
+table.microposts tr td.micropost{
+	border-top: 1ps solid #ccc;
+	padding-top: 10px;
+	vertical-align:top;
+}
+
+table.microposts tr td.micropost  span.timestamp{
+	display: :blocl;
+	font-size: 85%;
+	color:#665;
+}
+
+div.user_info a{
+	text-decoration: none;
+}
+form.new_microposts {
+	margin-bottom: 2em;
+}
+
+form.new_microposts textarea{
+	margin-bottom: 4em;
+	margin-bottom: 0em;
+}

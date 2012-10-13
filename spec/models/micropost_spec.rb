@@ -19,6 +19,7 @@ require 'spec_helper'
   it "should create a new instance with valid attributes" do
     @user.microposts.create!(@attr)
   end
+
   
   describe "user associations" do
     
@@ -48,6 +49,12 @@ require 'spec_helper'
     
     it "should reject long content" do
       @user.microposts.build(:content => "a" * 141).should_not be_valid
+    end
+
+    it "shoul paginate microposts" do
+      36.times {Factory(:micropost, user: @user, content: "foo")}
+      get :show, id: @user
+      response.should have_selector('div.paginationPmi')
     end
   end
 

@@ -1,6 +1,20 @@
-<h1>Sample APP</h1>
-<p>
-	This is the <a href = "#">homepages</a>
-</p>
+<% if signed_in? %> 
+	<table class = "front" summary = "for signed in users">
+		<tr>
+			<td class="main">
+				<h1 class ="micropost"> What's up? </h1>
+				<%= render 'shared/micropost_form' %>
+			</tr>
+		</td>
+		<td class = "shared/user_info" >
+			<%= render "shared/user_info" %>
+		</td>
+	</table>
+<% else %>
+	<h1>Sample APP</h1>
+	<p>
+		This is the <a href = "#">homepages</a>
+	</p>
 
-<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+	<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<% end %>

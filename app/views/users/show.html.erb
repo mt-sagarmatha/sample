@@ -5,10 +5,20 @@
 			<%= gravatar_for @user %>
 			<%= @user.name%>
 		</h1>
+		<% if @user.microposts.any? %>
+			<table class = "microposts" summary = "user microposts"
+					<%= render @user.microposts  %>
+				 	<%= will_paginate @microposts %>
+			</table>  
+			
+<!-- 			PAY ATTENTION     ^^^  this page is looks for the @user var, you have to specifically tell it to look for microposts -->
+		<% end %>
+
 		</td>
 		<td class = "sidebar round"> 
 			name<%= @user.name %> <br />
-			url <%= link_to user_path(@user), user_path(@user) %>
+			url <%= link_to user_path(@user), user_path(@user) %> </br>
+			micropost count <%= @user.microposts.count %>
 		</td>
 	</tr>
 </table>
